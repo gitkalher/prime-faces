@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>JSF 2.0 Hello World</title>
+	<h:outputScript name="functions.js" library="js" />
+	<h:outputStylesheet name="styles.css" library="css" />
+</h:head>
+
+<h:body>
+
+	<ui:composition template="template/common/commonLayout.xhtml">
+
+		<ui:define name="header">
+			<h3>AccordionPanel</h3>
+		</ui:define>
+
+		<ui:define name="content">
+
+			<h:panelGrid columns="1">
+
+				<p:accordionPanel id="accordionPanelId" dynamic="true">
+
+					<p:ajax event="tabChange" listener="#{accordioPanel.onChange}" />
+
+					<p:tab title="Tab Number One ...">
+						<h:graphicImage library="images" name="wood-folder-music.png"
+							width="55" height="48" />
+						<h:outputText value="This will go into tab one ...." />
+					</p:tab>
+
+					<p:tab title="Tab Number Two ...">
+						<h:graphicImage library="images" name="wood-folder-tool.png"
+							width="55" height="48" />
+						<h:outputText value="This will go into tab Two ...." />
+					</p:tab>
+
+					<p:tab title="Tab Number Three ...">
+						<h:graphicImage library="images" name="wood-folder-music.png"
+							width="55" height="48" />
+						<h:outputText value="This will go into tab Three ...." />
+					</p:tab>
+
+					<p:tab title="Tab Number Four ...">
+						<h:graphicImage library="images" name="wood-folder-tool.png"
+							width="55" height="48" />
+						<h:outputText value="This will go into tab Four ...." />
+					</p:tab>
+				</p:accordionPanel>
+
+				<h:panelGrid columns="2" cellspacing="5">
+					<h:outputText value="Current Tab : " />
+					<h:outputText id="currentTabOutId"
+						value="#{accordionPanel.currentTab}" />
+
+					<h:outputLabel value="Name : " />
+					<h:inputText value="#{accordionPanel.name}">
+						<p:ajax update="nameOutId" />
+					</h:inputText>
+					<h:outputText id="nameOutId" value="#{accordionPanel.name}" />
+					<p:commandButton value="Process" icon="ui-icon-disk" />
+				</h:panelGrid>
+
+			</h:panelGrid>
+
+		</ui:define>
+
+		<ui:define name="footer">
+			<h3>&copy; PrimeFaces 2013</h3>
+		</ui:define>
+
+	</ui:composition>
+
+</h:body>
+
+</html>
